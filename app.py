@@ -6,7 +6,7 @@ from langchain.chains import ConversationChain
 from langchain.embeddings import SentenceTransformerEmbeddings
 from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
 from langchain_core.prompts import PromptTemplate
-from llama_index.core import ServiceContext, VectorStoreIndex, download_loader
+from llama_index.core import ServiceContext, VectorStoreIndex, download_loader,set_global_service_context
 from llama_index.embeddings.langchain import LangchainEmbedding
 
 # Define custom AI and Human prefixes
@@ -65,10 +65,9 @@ def handle_conversation(input_text, document_context):
     structured_input = {'input': combined_input}
     
     conversation_chain = ConversationChain(llm=llm, memory=memory, prompt=custom_prompt, verbose=False, return_final_only=True)
-    response = conversation_chain.invoke(structured_input, model_kwargs={'max_tokens': 120}, stop=[custom_human_prefix, custom_ai_prefix, '.'])
+    response = conversation_chain.invoke(structured_input, model_kwargs={'max_tokens': 120}, stop=[custom_human_prefix, custom_ai_prefix, ".","\n"]).get('response')
     
-    ai_response = response.get('response')
-    return ai_response
+    return response
 
 # Create embeddings instance explicitly with HuggingFaceEmbeddings
 embed_model = LangchainEmbedding(SentenceTransformerEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2"))

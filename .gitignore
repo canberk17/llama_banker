@@ -1,4 +1,3 @@
-venv/
-model/
-.env
 llama2.ipynb
+model/
+venv/

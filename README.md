@@ -1,4 +1,5 @@
 # Llama Banker
+![Alt text](llama2banker.gif)
 
 Llama Banker is a Streamlit application designed to leverage the power of the LangChain and LLAMA Index libraries for generating AI-driven insights into financial documents. Utilizing the `meta.llama2-13b-chat-v1` model, Llama Banker provides users with an interactive platform to ask questions about financial performance based on the content of an annual report PDF.
 
