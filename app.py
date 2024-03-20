@@ -6,7 +6,7 @@ from langchain.chains import ConversationChain
 from langchain.embeddings import SentenceTransformerEmbeddings
 from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
 from langchain_core.prompts import PromptTemplate
-from llama_index.core import ServiceContext, VectorStoreIndex, download_loader
+from llama_index.core import ServiceContext, VectorStoreIndex, download_loader,set_global_service_context
 from llama_index.embeddings.langchain import LangchainEmbedding
 
 # Define custom AI and Human prefixes
